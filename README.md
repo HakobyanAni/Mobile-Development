@@ -7,3 +7,8 @@
 <b>MODEL</b> - A Model is responsible for exposing data in a way that is easily consumable by WPF. It must implement INotifyPropertyChanged and/or INotifyCollectionChanged as appropriate.
 
 <b>VIEWMODEL</b> - A ViewModel is a model for a view in the application or we can say as abstraction of the view. It exposes data relevant to the view and exposes the behaviors for the views, usually with Commands.
+
+
+
+<h2> Xamarin </h2>
+<b>Xamarin</b> is the name of a company that Microsoft acquired in 2016 and, at the same time, the name of a set of development tools and services that developers can use to build native apps for iOS, Android, and Windows in C#. <i>Xamarin’s main goal is to make it easier for .NET developers to build native apps for Android, iOS, and Windows reusing their existing skills.</i> The reason behind this goal is simple: building apps for Android requires you to know Java and Android Studio or Eclipse; building apps for iOS requires you to know Objective-C or Swift and Xcode; building apps for Windows requires you to know C# and Visual Studio. As an existing .NET developer, whether you are experienced or a beginner, getting to know all the possible platforms, languages, and development environments is extremely difficult, and costs are extremely high. 
