@@ -7,7 +7,7 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var Text = "12+3";
+            var Text = "12+3+35+5";
             string[] elements = Text.Split('+', '-', 'x', '/', '%');
             // List<string> operations = new List<string>(); regex
             if (elements[0] == "+" || elements[0] == "-" || elements[0] == "x " || elements[0] == "/" || elements[0] == "%")
@@ -40,7 +40,6 @@ namespace ConsoleApp1
                     result %= Int32.Parse(elements[i]);
                 }
             }
-
 
             Console.WriteLine(result);
             Console.WriteLine("Hello World!");

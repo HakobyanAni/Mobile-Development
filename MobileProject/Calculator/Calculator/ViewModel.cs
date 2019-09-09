@@ -12,6 +12,7 @@ namespace Calculator
         #region Fields
         public event PropertyChangedEventHandler PropertyChanged;
         private string _text;
+        private int _result;
         #endregion
 
         #region
@@ -26,12 +27,31 @@ namespace Calculator
         #region Properties
         public string Text
         {
-            get { return _text; }
+            get
+            {
+                return _text;
+            }
             set
             {
                 if (_text != value)
                 {
                     _text = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(Text)));
+                }
+            }
+        }
+
+        public int Result
+        {
+            get
+            {
+                return _result;
+            }
+            set
+            {
+                if (_result != value)
+                {
+                    _result = value;
                     PropertyChanged(this, new PropertyChangedEventArgs(nameof(Text)));
                 }
             }
