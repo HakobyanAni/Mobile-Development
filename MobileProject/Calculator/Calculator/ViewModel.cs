@@ -15,12 +15,19 @@ namespace Calculator
         private int _result;
         #endregion
 
-        #region
+        #region Constructors
         public ViewModel()
         {
             CleanCommand = new Command(ClickClean);
-            ClickCommand = new Command(ClickExecute);
+            NumberCommand = new Command(ClickExecute);
             EqualCommand = new Command(ClickEqual);
+            MinusCommand = new Command(ClickMinus);
+            MultipleCommand = new Command(ClickMultiple);
+            SumCommand = new Command(ClickSum);
+            DivideCommand = new Command(ClickDivide);
+            PercentCommand = new Command(ClickPercent);
+            PointCommand = new Command(ClickPoint);
+            SignCommand = new Command(ClickSign);
         }
         #endregion
 
@@ -60,8 +67,15 @@ namespace Calculator
 
         #region Commands
         public ICommand CleanCommand { get; }
-        public ICommand ClickCommand { get; }
+        public ICommand NumberCommand { get; }
         public ICommand EqualCommand { get; }
+        public ICommand MinusCommand { get; }
+        public ICommand SumCommand { get; }
+        public ICommand DivideCommand { get; }
+        public ICommand MultipleCommand { get; }
+        public ICommand PercentCommand { get; }
+        public ICommand PointCommand { get; }
+        public ICommand SignCommand { get; }
         #endregion
 
         #region Methods
@@ -90,6 +104,41 @@ namespace Calculator
 
                 Text = "00000000";
             }
+        }
+
+        void ClickMinus(object param)
+        {
+
+        }
+
+        void ClickDivide(object param)
+        {
+
+        }
+
+        void ClickSum(object param)
+        {
+
+        }
+
+        void ClickMultiple(object param)
+        {
+
+        }
+
+        void ClickPercent(object param)
+        {
+
+        }
+
+        void ClickPoint(object param)
+        {
+
+        }
+
+        void ClickSign(object param)
+        {
+
         }
         #endregion
     }
