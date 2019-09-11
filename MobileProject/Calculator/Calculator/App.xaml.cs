@@ -10,7 +10,9 @@ namespace Calculator
         {
             InitializeComponent();
 
+            var viewModel = new CalculatorViewModel();
             MainPage = new MainPage();
+            MainPage.BindingContext = viewModel;
         }
 
         protected override void OnStart()

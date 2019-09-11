@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace Calculator
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class CalculatorViewModel : INotifyPropertyChanged
     {
         #region Fields
         public event PropertyChangedEventHandler PropertyChanged;
@@ -16,7 +16,7 @@ namespace Calculator
         #endregion
 
         #region Constructors
-        public ViewModel()
+        public CalculatorViewModel()
         {
             CleanCommand = new Command(ClickClean);
             NumberCommand = new Command(ClickExecute);

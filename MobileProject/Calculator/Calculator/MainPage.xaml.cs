@@ -15,7 +15,7 @@ namespace Calculator
 		public MainPage ()
 		{
 			InitializeComponent ();
-            BindingContext = new ViewModel();
+            BindingContext = new CalculatorViewModel();
 		}
 	}
 }
