@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -11,8 +9,11 @@ namespace Calculator
     {
         #region Fields
         public event PropertyChangedEventHandler PropertyChanged;
-        private string _text;
-        private int _result;
+        private string _firstArgument = null;
+        private string _secondArgument = null;
+        private string _operation = null;
+        private string _result;
+        private bool isFirstArg = true;
         #endregion
 
         #region Constructors
@@ -21,34 +22,63 @@ namespace Calculator
             CleanCommand = new Command(ExecuteClean);
             NumberCommand = new Command(ExecuteNumberClick);
             EqualCommand = new Command(ExecuteEqual);
-            MinusCommand = new Command(ExecuteMinus);
-            MultipleCommand = new Command(ExecuteMultiple);
-            SumCommand = new Command(ExecuteSum);
-            DivideCommand = new Command(ExecuteDivide);
-            PercentCommand = new Command(ExecutePercent);
             PointCommand = new Command(ExecutePoint);
             SignCommand = new Command(ExecuteSign);
+            OperationCommand = new Command(ExecuteOperation);
         }
         #endregion
 
         #region Properties
-        public string Text
+        public string FirstArgument
         {
             get
             {
-                return _text;
+                return _firstArgument;
             }
             set
             {
-                if (_text != value)
+                if (_firstArgument != value)
                 {
-                    _text = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(Text)));
+                    _firstArgument = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(FirstArgument)));
                 }
             }
         }
 
-        public int Result
+        public string SecondArgument
+        {
+            get
+            {
+                return _secondArgument;
+            }
+            set
+            {
+                if (_secondArgument != value)
+                {
+                    _secondArgument = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(SecondArgument
+)));
+                }
+            }
+        }
+
+        public string Operation
+        {
+            get
+            {
+                return _operation;
+            }
+            set
+            {
+                if (_operation != value)
+                {
+                    _operation = value;
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(Operation)));
+                }
+            }
+        }
+
+        public string Result
         {
             get
             {
@@ -59,7 +89,7 @@ namespace Calculator
                 if (_result != value)
                 {
                     _result = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(Text)));
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(Result)));
                 }
             }
         }
@@ -68,77 +98,102 @@ namespace Calculator
         #region Commands
         public ICommand CleanCommand { get; }
         public ICommand NumberCommand { get; }
-        public ICommand EqualCommand { get; }
-        public ICommand MinusCommand { get; }
-        public ICommand SumCommand { get; }
-        public ICommand DivideCommand { get; }
-        public ICommand MultipleCommand { get; }
-        public ICommand PercentCommand { get; }
+        public ICommand OperationCommand { get; }
         public ICommand PointCommand { get; }
         public ICommand SignCommand { get; }
+        public ICommand EqualCommand { get; }
+
         #endregion
 
         #region Methods
         void ExecuteClean(object param)
         {
-            Text = "";
+            Result = "";
+            FirstArgument = null;
+            Operation = null;
+            SecondArgument = null;
         }
 
         void ExecuteNumberClick(object param)
         {
             if (param is string text)
             {
-                Text += text;
+                if (isFirstArg)
+                {
+                    FirstArgument += param;
+                    Result += param;
+                    isFirstArg = false;
+                }
+                else if (!isFirstArg)
+                {
+                    SecondArgument += param;
+                    Result += param;
+                    isFirstArg = true;
+                }
             }
         }
 
         void ExecuteEqual(object param)
         {
-            if (param is string text)
+            if (param is string text && FirstArgument != null && SecondArgument != null)
             {
-                string[] elements = Text.Split('+', '-', 'x', '/', '%');
-                foreach (string element in elements)
+                double firstArg = Convert.ToDouble(FirstArgument);
+                double secondArg = Convert.ToDouble(SecondArgument);
+                if (Operation == "+")
                 {
-                    var el = Convert.ToInt32(element);
+                    Result = (firstArg + secondArg).ToString();
                 }
+                else if (Operation == "-")
+                {
+                    Result = (firstArg - secondArg).ToString();
+                }
+                else if (Operation == "*")
+                {
+                    Result = (firstArg * secondArg).ToString();
+                }
+                else if (Operation == "/")
+                {
+                    Result = (firstArg / secondArg).ToString();
 
-                Text = "00000000";
+                }
+                else if (Operation == "%")
+                {
+                    Result = (firstArg % secondArg).ToString();
+                }
+                FirstArgument = null;
+                Operation = null;
+                SecondArgument = null;
             }
         }
 
-        void ExecuteMinus(object param)
+        void ExecuteOperation(object param)
         {
-
-        }
-
-        void ExecuteDivide(object param)
-        {
-
-        }
-
-        void ExecuteSum(object param)
-        {
-
-        }
-
-        void ExecuteMultiple(object param)
-        {
-
-        }
-
-        void ExecutePercent(object param)
-        {
-
+            if (param is string text)
+            {
+                Operation = param.ToString();
+                Result += Operation;
+            }
         }
 
         void ExecutePoint(object param)
         {
-
         }
 
         void ExecuteSign(object param)
         {
-
+            double firstArg = Convert.ToDouble(FirstArgument);
+            double secondArg = Convert.ToDouble(SecondArgument);
+            if (param.ToString() == "-")
+            {
+                if (isFirstArg)
+                {
+                    firstArg *= -1;
+                }
+                else
+                {
+                    secondArg *= -1;
+                }
+            }
         }
         #endregion
     }
