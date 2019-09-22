@@ -18,16 +18,16 @@ namespace Calculator
         #region Constructors
         public CalculatorViewModel()
         {
-            CleanCommand = new Command(ClickClean);
-            NumberCommand = new Command(ClickExecute);
-            EqualCommand = new Command(ClickEqual);
-            MinusCommand = new Command(ClickMinus);
-            MultipleCommand = new Command(ClickMultiple);
-            SumCommand = new Command(ClickSum);
-            DivideCommand = new Command(ClickDivide);
-            PercentCommand = new Command(ClickPercent);
-            PointCommand = new Command(ClickPoint);
-            SignCommand = new Command(ClickSign);
+            CleanCommand = new Command(ExecuteClean);
+            NumberCommand = new Command(ExecuteNumberClick);
+            EqualCommand = new Command(ExecuteEqual);
+            MinusCommand = new Command(ExecuteMinus);
+            MultipleCommand = new Command(ExecuteMultiple);
+            SumCommand = new Command(ExecuteSum);
+            DivideCommand = new Command(ExecuteDivide);
+            PercentCommand = new Command(ExecutePercent);
+            PointCommand = new Command(ExecutePoint);
+            SignCommand = new Command(ExecuteSign);
         }
         #endregion
 
@@ -79,12 +79,12 @@ namespace Calculator
         #endregion
 
         #region Methods
-        void ClickClean(object param)
+        void ExecuteClean(object param)
         {
             Text = "";
         }
 
-        void ClickExecute(object param)
+        void ExecuteNumberClick(object param)
         {
             if (param is string text)
             {
@@ -92,7 +92,7 @@ namespace Calculator
             }
         }
 
-        void ClickEqual(object param)
+        void ExecuteEqual(object param)
         {
             if (param is string text)
             {
@@ -106,37 +106,37 @@ namespace Calculator
             }
         }
 
-        void ClickMinus(object param)
+        void ExecuteMinus(object param)
         {
 
         }
 
-        void ClickDivide(object param)
+        void ExecuteDivide(object param)
         {
 
         }
 
-        void ClickSum(object param)
+        void ExecuteSum(object param)
         {
 
         }
 
-        void ClickMultiple(object param)
+        void ExecuteMultiple(object param)
         {
 
         }
 
-        void ClickPercent(object param)
+        void ExecutePercent(object param)
         {
 
         }
 
-        void ClickPoint(object param)
+        void ExecutePoint(object param)
         {
 
         }
 
-        void ClickSign(object param)
+        void ExecuteSign(object param)
         {
 
         }

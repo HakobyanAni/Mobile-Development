@@ -18,7 +18,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <Label Text="{Binding Text}" 
+        <Label Text="{Binding Result}" 
                VerticalOptions="Center"
                HorizontalOptions="Center"
                Grid.Row="0" />
