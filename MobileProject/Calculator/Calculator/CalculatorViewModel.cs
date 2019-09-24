@@ -56,8 +56,7 @@ namespace Calculator
                 if (_secondArgument != value)
                 {
                     _secondArgument = value;
-                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(SecondArgument
-)));
+                    PropertyChanged(this, new PropertyChangedEventArgs(nameof(SecondArgument)));
                 }
             }
         }
@@ -114,7 +113,7 @@ namespace Calculator
             SecondArgument = null;
         }
 
-        void ExecuteNumberClick(object param)
+         void ExecuteNumberClick(object param)
         {
             if (param is string text)
             {
@@ -122,13 +121,11 @@ namespace Calculator
                 {
                     FirstArgument += param;
                     Result += param;
-                    isFirstArg = false;
                 }
                 else if (!isFirstArg)
                 {
                     SecondArgument += param;
                     Result += param;
-                    isFirstArg = true;
                 }
             }
         }
@@ -147,7 +144,7 @@ namespace Calculator
                 {
                     Result = (firstArg - secondArg).ToString();
                 }
-                else if (Operation == "*")
+                else if (Operation == "x")
                 {
                     Result = (firstArg * secondArg).ToString();
                 }
@@ -160,9 +157,10 @@ namespace Calculator
                 {
                     Result = (firstArg % secondArg).ToString();
                 }
-                FirstArgument = null;
+                FirstArgument = Result;
                 Operation = null;
                 SecondArgument = null;
+                isFirstArg = true;
             }
         }
 
@@ -172,11 +170,23 @@ namespace Calculator
             {
                 Operation = param.ToString();
                 Result += Operation;
+                isFirstArg = false;
             }
         }
 
         void ExecutePoint(object param)
         {
+            if (param is string text)
+            {
+                if (isFirstArg)
+                {
+                    FirstArgument += param;
+                }
+                else if (!isFirstArg)
+                {
+                    SecondArgument += param;
+                }
+            }
         }
 
         void ExecuteSign(object param)
