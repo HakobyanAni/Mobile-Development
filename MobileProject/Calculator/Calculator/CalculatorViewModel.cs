@@ -14,6 +14,7 @@ namespace Calculator
         private string _operation = null;
         private string _result;
         private bool isFirstArg = true;
+        private bool IsMinus = false;
         #endregion
 
         #region Constructors
@@ -113,7 +114,7 @@ namespace Calculator
             SecondArgument = null;
         }
 
-         void ExecuteNumberClick(object param)
+        void ExecuteNumberClick(object param)
         {
             if (param is string text)
             {
@@ -176,32 +177,43 @@ namespace Calculator
 
         void ExecutePoint(object param)
         {
-            if (param is string text)
+            if (isFirstArg)
             {
-                if (isFirstArg)
-                {
-                    FirstArgument += param;
-                }
-                else if (!isFirstArg)
-                {
-                    SecondArgument += param;
-                }
+                FirstArgument += ".";
+                Result += ".";
+            }
+            else if (!isFirstArg)
+            {
+                SecondArgument += ".";
+                Result += ".";
             }
         }
 
         void ExecuteSign(object param)
         {
+            IsMinus = !IsMinus;
             double firstArg = Convert.ToDouble(FirstArgument);
             double secondArg = Convert.ToDouble(SecondArgument);
-            if (param.ToString() == "-")
+            if (IsMinus)
             {
                 if (isFirstArg)
                 {
                     firstArg *= -1;
+                    FirstArgument = firstArg.ToString();
+                    Result = FirstArgument;
                 }
                 else
                 {
-                    secondArg *= -1;
+                    SecondArgument = secondArg.ToString();
+                    if (Operation == "-")
+                    {
+                        Result = FirstArgument + "+" + SecondArgument;
+                        Operation = "+";
+                    }
+                    else
+                    {
+                        Result = FirstArgument + Operation + SecondArgument;
+                    }
                 }
             }
         }
