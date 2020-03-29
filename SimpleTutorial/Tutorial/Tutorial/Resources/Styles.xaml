@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d">
+
+    <Style TargetType="{x:Type Button}" x:Key="button_style">
+        <Setter Property="BackgroundColor" Value="#213058" />
+        <Setter Property="BorderColor" Value="#213058" />
+        <Setter Property="BorderWidth" Value="1"/>
+        <Setter Property="TextColor" Value="#F4AE3F"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="WidthRequest" Value="300"/>
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="CornerRadius" Value="25"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="Padding" Value="2"/>
+        <Setter Property="FontSize">
+            <Setter.Value>
+                <OnPlatform 
+                    iOS="16" 
+                    Android="14"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Label}" x:Key="label_style">
+        <Setter Property="TextColor" Value="#213058"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="HorizontalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center"/>
+    </Style>
+
+    <Style TargetType="{x:Type Entry}" x:Key="entry_style">
+        <Setter Property="Margin" Value="20"/>
+        <Setter Property="PlaceholderColor" Value="#F4AE3F"/>
+        <Setter Property="TextColor" Value="#F4AE3F"/>
+        <Setter Property="Opacity" Value="0.5"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="WidthRequest" Value="180"/>
+        <Setter Property="FontSize">
+            <Setter.Value>
+                <OnPlatform 
+                    iOS="16" 
+                    Android="14"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

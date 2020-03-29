@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:resx="clr-namespace:Tutorial.Resources"
+             x:Class="Tutorial.UI.LoginPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+
+        <Grid BackgroundColor="#F0E6D7" Padding="0" Margin="0" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0.25*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <Entry
+                Grid.Row="1" Grid.Column="1"
+                Placeholder="{x:Static resx:ProjectStrings.EmailSpan}"
+                Text="{Binding Email, Mode=TwoWay}"
+                Style="{StaticResource entry_style}"/>
+            <Entry
+                Grid.Row="3" Grid.Column="1"
+                IsPassword="True"
+                Placeholder="{x:Static resx:ProjectStrings.PasswordSpan}"
+                Text="{Binding Password,Mode=TwoWay}"
+                Style="{StaticResource entry_style}"/>
+            <Button 
+                Grid.Row="5" Grid.Column="1" 
+                Command="{Binding LoginCommand}" 
+                Text="{x:Static resx:ProjectStrings.LoginBtn}"
+                Style="{StaticResource button_style}"/>
+            <Frame
+                Grid.Row="7" Grid.Column="1"
+                HeightRequest="30" 
+                WidthRequest="150"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                BackgroundColor="Transparent">
+                <Label Text="{x:Static resx:ProjectStrings.ForgotPassLbl}"
+                       Style="{StaticResource label_style}"
+                       HeightRequest="30"/>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ForgotPasswordPageCommand}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Button 
+                Grid.Row="9" Grid.Column="1"
+                Command="{Binding SignUpPageCommand}"
+                Text="{x:Static resx:ProjectStrings.SignupBtn}"
+                Style="{StaticResource button_style}"/>
+
+            <Button 
+                Grid.Row="11" Grid.Column="1"
+                Command="{Binding BackCommand}"
+                Text="Back"/>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

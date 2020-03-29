@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:resx="clr-namespace:Tutorial.Resources"
+             x:Class="Tutorial.UI.ConfirmCodePage"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+
+        <Grid BackgroundColor="#F0E6D7" Padding="0" Margin="0" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                Grid.Row="1" Grid.Column="1"
+                Text="{x:Static resx:ProjectStrings.ConfirmCodePageText}"
+                Style="{StaticResource label_style}">
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="17" />
+                        <On Platform="Android" Value="16" />
+                    </OnPlatform>
+                </Label.FontSize>
+            </Label>
+            <Entry 
+                Grid.Row="3" Grid.Column="1"
+                Placeholder="{x:Static resx:ProjectStrings.CodeSpan}"
+                Style="{StaticResource entry_style}"/>
+            <Button
+                Grid.Row="5" Grid.Column="1"
+                Command="{Binding ConfirmCodeCommand}"
+                Text="{x:Static resx:ProjectStrings.SendEmailBtn}"
+                Style="{StaticResource button_style}"/>
+            <Button 
+                Grid.Row="7" Grid.Column="1" 
+                Command="{Binding BackCommand}" 
+                Text="Back" 
+                TextColor="#213058"/>
+            
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

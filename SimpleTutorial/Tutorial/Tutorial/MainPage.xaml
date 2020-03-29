@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resx="clr-namespace:Tutorial.Resources"
+             mc:Ignorable="d"
+             x:Class="Tutorial.MainPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid BackgroundColor="#F0E6D7" Padding="0" Margin="0" RowSpacing="0" ColumnSpacing="0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="1" Margin="0" Padding="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button 
+                Grid.Column="1" 
+                Command="{Binding LogInPageCommand}" 
+                Text="{x:Static resx:ProjectStrings.LoginBtn}"
+                Style="{StaticResource button_style}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"/>
+            <Button 
+                Grid.Column="3"
+                Command="{Binding SignUpPageCommand}"
+                Text="{x:Static resx:ProjectStrings.SignupBtn}"
+                Style="{StaticResource button_style}"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1" BackgroundColor="#F0E6D7" Padding="0" Margin="0" RowSpacing="0" ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="1"
+                Text="{x:Static resx:ProjectStrings.WelcomePageText}"
+                Style="{StaticResource label_style}">
+                <Label.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="20" />
+                        <On Platform="Android" Value="22" />
+                    </OnPlatform>
+                </Label.FontSize>
+            </Label>
+
+        </Grid>
+    </Grid>
+
+</ContentPage>
