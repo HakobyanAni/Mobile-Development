@@ -59,11 +59,12 @@
                 Text="{x:Static resx:ProjectStrings.SignupBtn}"
                 Command="{Binding SignUpCommand}" 
                 Style="{StaticResource button_style}"/>
-            <Button 
+            <ImageButton 
                 Grid.Row="11" Grid.Column="1" 
                 Command="{Binding BackCommand}" 
-                Text="Back" 
-                TextColor="#213058"/>
+                Source="back"
+                BackgroundColor="Transparent"
+                BorderColor="Transparent"/>
 
         </Grid>        
         
